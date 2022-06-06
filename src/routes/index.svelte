@@ -42,14 +42,16 @@
             <p class="user-name">
                 {nome_usuario}
             </p>
-            <p class="form-label">Nickname <button name="buttons1"class="btn btn-sm btn-outline-light">Editar</button></p>
-            <p class="form-label">Email <button name="buttons2" class="btn btn-sm btn-outline-light">Editar</button></p>
-            <p class="form-label">Senha <button name="buttons3" class="btn btn-outline-light btn-sm">Editar</button></p>
-            <p class="form-label">Fotossenssivel? 
-            <input type="checkbox" />
+            <p class="dados">
+                <!-- dados do usuário para edição -->
+                <input placeholder="Nickname" value="Nickname">
+                <input placeholder="Email" type="email" value="jairo@email.com">
+                <input placeholder="Senha" type="password" value="Senha">
+                <p class="form-label">Fotossenssivel? 
+                    <input type="checkbox" />
             </p>
+            <!-- abiri um modal com as opções de sensibilidade do banco -->
             <p><button name="buttons4" class="btn btn-outline-light btn-sm">Sensibilidades</button></p>
-            
             <button type="button" class="btn btn-outline-light btn-lg">Salvar</button>
         </div>
     </div>
@@ -62,6 +64,7 @@
     </div>
     <div class="edit_button">
         <button type="button" class="btn-circle">Editar</button>
+        <!-- botão ou estilizar o input <input class="input-circle" type="file"> -->
     </div>
 </body>
 
@@ -92,14 +95,13 @@
     input[type=checkbox] {
     transform: scale(1.3);
     }
-    button[name=buttons1]{
-        margin-left: 20px;
-    }
-    button[name=buttons2]{
-        margin-left: 58px;
-    }
-    button[name=buttons3]{
-        margin-left: 50px;
+    .dados > input{
+        margin-bottom: 10px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        outline: none;
+        border-radius: 6px;
+        border-width:1px;
+        height: 30px;
     }
     button[name=buttons4]{
         font-size: 18px;
@@ -135,6 +137,7 @@
         font-size: 12px;
         line-height: 1.42857;
         margin-top: 400px;
+        outline: none;
     }
     .edit_button{
         margin-top: -445px;
