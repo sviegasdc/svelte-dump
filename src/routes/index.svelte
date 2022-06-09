@@ -1,7 +1,11 @@
 
 <script>
     import "./../app.css";
+    import Modal from "./modal.svelte"
+    let modal;
+    let isOpen = false;
     let nome_usuario = "jairo";
+    let sensibilidades = [{name: "Aracnofobia"},{name:"Glossofobia"},{name:"Nictofobia"},{name:"Claustrofobia"}];
     let imgSrc ="https://cdn.discordapp.com/attachments/852888241349853230/863477151914524722/brand.png";
 </script>
 
@@ -35,7 +39,6 @@
 </header>
 
 <body>
-    
     <div class="user_d_container">
         <div class="corpo">
             <h1 class="title">Editar perfil</h1>
@@ -51,10 +54,19 @@
                     <input type="checkbox" />
             </p>
             <!-- abiri um modal com as opções de sensibilidade do banco -->
-            <p><button name="buttons4" class="btn btn-outline-light btn-sm">Sensibilidades</button></p>
+            <p><button name="buttons4" on:click={() => (isOpen = !isOpen)}  class="btn btn-outline-light btn-sm">Sensibilidades</button></p>
+            <Modal bind:this={modal} {isOpen}>
+                <div class="tela_modal">
+                    <h2 class="modal_title">Selecione suas sensibilidades</h2>
+                    {#each sensibilidades as sensibilidade}
+                        <p class="sensibilidade">{sensibilidade.name}<input type="checkbox"></p>
+                    {/each}
+                </div>
+            </Modal>
             <button type="button" class="btn btn-outline-light btn-lg">Salvar</button>
         </div>
     </div>
+    <!-- pode mudar a imagem só clicando nela -->
     <div class="user_image">
         <img
         src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
@@ -62,10 +74,10 @@
         width="200px"
         height="200px"/>
     </div>
-    <div class="edit_button">
+    <!-- <div class="edit_button">
         <button type="button" class="btn-circle">Editar</button>
-        <!-- botão ou estilizar o input <input class="input-circle" type="file"> -->
-    </div>
+        botão ou estilizar o input <input class="input-circle" type="file">
+    </div>-->
 </body>
 
 <style>
@@ -76,6 +88,24 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 0 10px 0;
+    }
+    .tela_modal{
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+    }
+    .modal_title{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+       
+    }
+    .sensibilidade{
+        padding-top: 10px;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: large;
+        text-align: center;
+        display: table-column;
     }
     body{
         background-color: black;
@@ -124,11 +154,14 @@
         margin-left: 850px;
         width: 500px;
     }
+    .user_image:hover{
+        cursor: pointer;
+    }
     /* MUDAR ISSO embaixo*/ 
     .user-name{
         color:aquamarine;
     }
-    .btn-circle {
+    /* .btn-circle {
         width: 60px;
         height: 60px;
         padding: 6px 0px;
@@ -142,6 +175,6 @@
     .edit_button{
         margin-top: -445px;
         margin-left: 975px;
-    }
+    } */
 
 </style>
